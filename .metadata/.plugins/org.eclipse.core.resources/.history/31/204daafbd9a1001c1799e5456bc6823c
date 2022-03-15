@@ -1,0 +1,17 @@
+package fis.java.minitest.common;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fis.java.minitest.model.Account;
+
+public class Data {
+	public static List<Account> list = new ArrayList<>();
+	
+	static {
+		list.add(new Account("Duong Tang", "050100112233"));
+		list.add( new Account("Ton Ngo Khong", "050100112233"));
+		list.add( new Account("Xa Tang", "050100112233"));
+		list.add(new Account("Chu Bat Gioi", "050100112233"));
+	}
+}

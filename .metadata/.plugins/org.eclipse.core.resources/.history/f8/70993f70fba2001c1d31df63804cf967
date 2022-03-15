@@ -1,0 +1,52 @@
+package java.fis.util;
+
+public class MyStack<E> {
+	
+	private Object[] elementStack;
+			
+	private int maxSize;
+	
+	private int topIndex;
+	
+	//khởi tạo không tham số
+	public MyStack(){
+		maxSize = 0;
+		topIndex = -1;
+		elementStack = new Object[maxSize];
+	}
+	
+	//khởi tạo có tham số
+	public MyStack(int maxSize){
+		this.maxSize = maxSize;
+		topIndex = -1;
+		elementStack = new Object[maxSize];
+	}
+	
+	//hàm thêm đối tượng vào cuối danh sách
+	public E push(E item) {
+		if(maxSize == 0) {
+			maxSize = 1;
+			topIndex = 0;
+			elementStack = new Object[maxSize];
+			elementStack[topIndex] = item;
+		}else {
+			maxSize++;
+			topIndex++;
+			Object[] cloneStack = new Object[maxSize];
+			cloneStack[topIndex] = item;
+			elementStack = cloneStack;
+		}
+		return item;
+	}
+	
+	
+	//hàm lấy về phần tử cuối cùng và xoá
+	public E pop() {
+		return null;
+	}
+	
+	//hàm kiểm tra stack có rỗng k
+	public boolean isEmpty() {
+		return maxSize == 0;
+	}
+}

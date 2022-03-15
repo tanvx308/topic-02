@@ -1,0 +1,48 @@
+package fis.java.topic2.view;
+
+import java.util.Calendar;
+import java.util.List;
+
+import fis.java.topic2.common.DataForTest;
+import fis.java.topic2.controller.DotDangKyHocPhan;
+import fis.java.topic2.controller.PhieuDangKyHocPhan;
+import fis.java.topic2.model.BangDiem;
+import fis.java.topic2.model.ChuongTrinhHoc;
+import fis.java.topic2.model.MonHoc;
+import fis.java.topic2.model.SinhVien;
+
+public class MainApplication {
+	public static void main(String[] args) {
+		DataForTest dataForTest = new DataForTest();
+		List<SinhVien> listSV = dataForTest.createListSinhVien();
+		List<MonHoc> listMH = dataForTest.createListMonHoc();
+		
+		DotDangKyHocPhan dotDangKyHocPhan = new DotDangKyHocPhan("DKHP01", 
+				Calendar.getInstance(), 
+				Calendar.getInstance());
+		
+		SinhVien ntphuoc = new SinhVien.Builder()
+				.masv("0001")
+				.ten("Nguyen Thanh Phuoc")
+				.bangDiem(new BangDiem())
+				.build();
+		
+		PhieuDangKyHocPhan phieu_1 = new PhieuDangKyHocPhan(listSV.get(0), dotDangKyHocPhan);
+		phieu_1.setDsMonHoc(listMH);
+		PhieuDangKyHocPhan phieu_2 = new PhieuDangKyHocPhan(listSV.get(1), dotDangKyHocPhan);
+		phieu_2.setDsMonHoc(listMH);
+		PhieuDangKyHocPhan phieu_3 = new PhieuDangKyHocPhan(listSV.get(2), dotDangKyHocPhan);
+		phieu_3.setDsMonHoc(listMH);
+		PhieuDangKyHocPhan phieu_4 = new PhieuDangKyHocPhan(listSV.get(3), dotDangKyHocPhan);
+		phieu_4.setDsMonHoc(listMH);
+		PhieuDangKyHocPhan phieu_5 = new PhieuDangKyHocPhan(listSV.get(4), dotDangKyHocPhan);
+		phieu_5.setDsMonHoc(listMH);
+		PhieuDangKyHocPhan phieu_6 = new PhieuDangKyHocPhan(listSV.get(5), dotDangKyHocPhan);
+		phieu_6.setDsMonHoc(listMH);
+		
+		for(PhieuDangKyHocPhan p: dotDangKyHocPhan.getDsPhieuDangKy()) {
+			System.out.println(p.laHopLe());
+		}
+		
+	}
+}

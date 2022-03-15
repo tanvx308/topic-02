@@ -1,0 +1,7 @@
+package java.fis.util;
+
+import java.util.Stack;
+
+public class MyStack {
+	
+}

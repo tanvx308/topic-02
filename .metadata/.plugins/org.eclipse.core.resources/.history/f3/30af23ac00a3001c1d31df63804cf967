@@ -1,0 +1,13 @@
+package java.fis.util;
+
+public class MainApp {
+	public static void main(String[] args) {
+		MyStack<Integer> myStack = new MyStack<>();
+		
+		myStack.push(Integer.valueOf(1));
+		myStack.push(Integer.valueOf(3));
+		myStack.push(Integer.valueOf(2));
+		
+		System.out.println(myStack.toString());
+	}
+}

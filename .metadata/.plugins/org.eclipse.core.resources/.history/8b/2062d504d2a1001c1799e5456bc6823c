@@ -1,0 +1,5 @@
+package fis.java.minitest.model;
+
+public class Account {
+
+}

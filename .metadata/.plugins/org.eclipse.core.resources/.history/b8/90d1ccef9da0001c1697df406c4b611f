@@ -1,0 +1,11 @@
+package fis.java.topic2.view;
+
+import fis.java.topic2.model.LopHoc;
+import fis.java.topic2.model.SinhVien;
+
+public class MainApplication {
+	public static void main(String[] args) {
+		LopHoc lh = new LopHoc("FIS-Java", "Nguyen Thanh Phuoc");
+		lh.setDsLop(SinhVien.createShortList());
+	}
+}

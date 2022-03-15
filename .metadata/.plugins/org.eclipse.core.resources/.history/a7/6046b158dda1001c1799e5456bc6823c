@@ -1,0 +1,13 @@
+package fis.java.minitest.common;
+
+public enum Status {
+	0("Het hieu luc"),
+	1("Hieu luc"),
+	2("Tam khoa");
+	
+	private String value;
+	
+	private Status(String value) {
+		this.value = value;
+	}
+}

@@ -1,0 +1,25 @@
+package fis.java.topic2.view;
+
+import fis.java.topic2.model.LopHoc;
+import fis.java.topic2.model.SinhVien;
+
+public class MainApplication {
+	public static void main(String[] args) {
+//		LopHoc lh = new LopHoc("FIS-Java", "Nguyen Thanh Phuoc");
+//		lh.setDsLop(SinhVien.createShortList());
+//		lh.inDiem();
+//		
+//		System.out.println("Sinh viên yếu");
+//		lh.inDiem(lh.sinhVienYeu());
+//		
+//		System.out.println("Top 10:");
+//		lh.inDiem(lh.top10());
+		
+		System.out.println("Bảng điểm sinh viên");
+		
+		for(SinhVien sv: SinhVien.createShortList()) {
+			sv.bangDiem();
+			System.out.println();
+		}
+	}
+}

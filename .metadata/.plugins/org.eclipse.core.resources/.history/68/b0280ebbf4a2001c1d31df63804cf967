@@ -1,0 +1,5 @@
+package java.fis.util;
+
+public class MyStack {
+
+}

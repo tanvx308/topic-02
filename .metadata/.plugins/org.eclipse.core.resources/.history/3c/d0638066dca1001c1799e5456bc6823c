@@ -1,0 +1,53 @@
+package fis.java.minitest.dao;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
+
+import fis.java.minitest.common.CustomException;
+import fis.java.minitest.model.Account;
+import fis.java.minitest.util.ValidateUtil;
+import fis.java.minitest.util.impl.StringValidateImpl;
+
+public class AccountDAO {
+	private static Scanner sc = new Scanner(System.in);
+	
+	private static ValidateUtil validateUtil;
+	
+	//hàm nhập thông tin account
+	public static Account inputAccount() throws CustomException {
+		validateUtil = new StringValidateImpl();
+		
+		System.out.print("Nhập tên tài khoản: ");
+		String accountName = sc.nextLine();
+		if(!validateUtil.isValidate(5, 100, accountName)) {
+			throw new CustomException("Tên tài khoản không hợp lệ!");
+		}
+		
+		System.out.print("Nhập số tài khoản: ");
+		String accountNumber = sc.nextLine();
+		if(!validateUtil.isValidate(12, 12, accountNumber)) {
+			throw new CustomException("Số tài khoản không hợp lệ!");
+		}
+		
+		return new Account(accountName, accountNumber);
+	}
+	//sắp xếp danh sách
+	public static void sort(Comparator<Account> cmp, List<Account> accounts) {
+		Collections.sort(accounts, cmp);
+	}
+	
+	//thêm tài khoản
+	public static Account add(Account account) {
+		if(isValidateAccount(account)) {
+			
+		}
+		return null;
+	}
+	
+	//hàm kiểm tra tài khoản có hợp lệ
+	public static boolean isValidateAccount(Account account) {
+		return false;
+	}
+}

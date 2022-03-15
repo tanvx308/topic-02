@@ -1,0 +1,88 @@
+package fis.java.topic2.model;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class LopHoc {
+	private String ten;
+	private String giaoVien;
+	private List<SinhVien> dsLop = new ArrayList<SinhVien>();
+
+	public LopHoc(String ten, String giaoVien) {
+		this.ten = ten;
+		this.giaoVien = giaoVien;
+	}
+
+	public String getTen() {
+		return ten;
+	}
+
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+
+	public String getGiaoVien() {
+		return giaoVien;
+	}
+
+	public void setGiaoVien(String giaoVien) {
+		this.giaoVien = giaoVien;
+	}
+
+	public List<SinhVien> getDsLop() {
+		return dsLop;
+	}
+
+	public void setDsLop(List<SinhVien> dsLop) {
+		this.dsLop = dsLop;
+	}
+
+	public boolean them(SinhVien svMoi) {
+		return dsLop.add(svMoi);
+	}
+
+	// Cau 4
+	public void inDiem() {
+		/*
+		 * Danh Sach Diem Lop : ten Giao Vien Chu Nhiem : giaoVien STT MSSV Ten Diem TB
+		 * XepLoai 1 123456 Nguyen Van A 8.4 GIOI 2 678919 Nguyen Van B 6 TB-KHA 3
+		 * 112456 Nguyen Van C 7 KHA
+		 */
+		// ...
+		System.out.println("\tDanh sách điểm lớp " + this.ten);
+		System.out.println("Giáo viên chủ nhiệm : " + this.giaoVien);
+		System.out.println("STT \t MSSV \t\t  Tên \t\t Điểm TB \t\t Xếp loại");
+		for (int i = 0; i < dsLop.size(); i++) {
+			SinhVien sv = dsLop.get(i);
+			System.out.printf("%d \t %s \t\t %s \t\t %f \t\t %s", ++i, sv.getMssv(), sv.getTen(),
+					sv.tinhDiemTrungBinh(), sv.xepLoai());
+			System.out.println();
+		}
+	}
+
+	// Cau 5
+	public List<SinhVien> top10() {
+		// Tra ve danh sach 10 sinh vien co diem trung binh lon nhat lop
+		// ...
+		Collections.sort(dsLop, new Comparator<SinhVien>() {
+
+			@Override
+			public int compare(SinhVien o1, SinhVien o2) {
+				// TODO Auto-generated method stub
+				return Double.compare(o2.tinhDiemTrungBinh(), o1.tinhDiemTrungBinh());
+			}
+		});
+		int len = this.dsLop.size();
+		if (len <= 10) {
+			return dsLop;
+		}
+		return dsLop.subList(0, 10);
+	}
+
+	// Cau 6
+	public List<SinhVien> sinhVienYeu() {
+		List<SinhVien> result = dsLop.stream().filter(item -> item.xepLoai().equals("YẾU"))
+				.collect(Collectors.toList());
+		return result;
+	}
+}

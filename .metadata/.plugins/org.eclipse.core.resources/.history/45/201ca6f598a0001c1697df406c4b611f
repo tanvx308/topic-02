@@ -1,0 +1,12 @@
+package fis.java.topic2.view;
+
+import java.util.List;
+
+import fis.java.topic2.model.MonHoc;
+
+public class MainApplication {
+	public static void main(String[] args) {
+		List<MonHoc> list = MonHoc.createShortList();
+		list.forEach(i -> System.out.println(i.toString()););
+	}
+}

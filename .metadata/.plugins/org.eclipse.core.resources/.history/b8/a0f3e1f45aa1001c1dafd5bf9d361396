@@ -1,0 +1,91 @@
+package fis.java.topic2.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MonHoc {
+	private String ma;
+	private String ten;
+	private int soTclt;
+	private int soTcth;
+
+	private MonHoc() {
+	}
+
+	private MonHoc(MonHoc.Builder builder) {
+		this.ma = builder.ma;
+		this.ten = builder.ten;
+		this.soTclt = builder.soTclt;
+		this.soTcth = builder.soTcth;
+	}
+	
+	public String getMa() {
+		return ma;
+	}
+
+	public String getTen() {
+		return ten;
+	}
+
+	public int getSoTclt() {
+		return soTclt;
+	}
+
+	public int getSoTcth() {
+		return soTcth;
+	}
+
+	public static class Builder {
+		private String ma = "";
+		private String ten = "";
+		private int soTclt = 0;
+		private int soTcth = 0;
+
+		public MonHoc.Builder ma(String ma) {
+			this.ma = ma;
+			return this;
+		}
+
+		public MonHoc.Builder ten(String ten) {
+			this.ten = ten;
+			return this;
+		}
+
+		public MonHoc.Builder soTclt(int soTclt) {
+			this.soTclt = soTclt;
+			return this;
+		}
+
+		public MonHoc.Builder soTcth(int soTcth) {
+			this.soTcth = soTcth;
+			return this;
+		}
+
+		public MonHoc build() {
+			return new MonHoc(this);
+		}
+
+	}
+
+	// Mon hoc tien quyet la mon bat buoc phai dau
+	private List<MonHoc> dsMonTienQuyet = new ArrayList<MonHoc>();
+
+	// Xem ky dinh nghia giong nhau
+	public boolean equals(Object that) {
+		if (that == null)
+			return false;
+		if (!(that instanceof MonHoc))
+			return false;
+		MonHoc thatMonHoc = (MonHoc) that;
+		return this.ma.equals(thatMonHoc.ma);
+	}
+
+	public void addMonTienQuyet(MonHoc monTienQuyet) {
+		this.dsMonTienQuyet.add(monTienQuyet);
+	}
+
+	public List<MonHoc> getDsMonTienQuyet() {
+		return dsMonTienQuyet;
+	}
+
+}

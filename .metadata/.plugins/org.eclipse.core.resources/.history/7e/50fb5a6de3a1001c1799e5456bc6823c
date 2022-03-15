@@ -1,0 +1,40 @@
+package fis.java.minitest.dao;
+
+import java.util.Scanner;
+
+import fis.java.minitest.common.CustomException;
+import fis.java.minitest.util.ValidateUtil;
+import fis.java.minitest.util.impl.StringValidateImpl;
+
+public class TransactionDAO {
+	private static Scanner sc = new Scanner(System.in);
+	
+	private static ValidateUtil validateUtil = new StringValidateImpl();
+	
+	//chức năng chuyển tiền
+	public static void inputTrans() throws CustomException {
+		System.out.print("Nhập số tài khoản chuyển đi:");
+		String fromAccount = sc.nextLine();	
+		if(!AccountDAO.isValidateAccNumber(fromAccount)) {
+			throw new CustomException("Số tài khoản không hợp lệ!");
+		}
+		
+		System.out.print("Nhập số tài khoản chuyển đến:");
+		String toAccount = sc.nextLine();	
+		if(!AccountDAO.isValidateAccNumber(toAccount)) {
+			throw new CustomException("Số tài khoản không hợp lệ!");
+		}	
+		
+		System.out.print("Bạn chắc chắn muốn thực hiện giao dịch?");
+		String choose = sc.nextLine();
+		if(choose.trim().equalsIgnoreCase("y")){
+			
+		}else if(choose.trim().equalsIgnoreCase("n")) {
+			return;
+		}else {
+			throw new CustomException("Thao tác không thành công");
+		}
+	
+	}
+
+}

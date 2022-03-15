@@ -1,0 +1,16 @@
+package fis.java.minitest.dao;
+
+import fis.java.minitest.common.CustomException;
+import fis.java.minitest.util.ValidateUtil;
+import fis.java.minitest.util.impl.StringValidateImpl;
+
+public class TransactionDAO {
+	private static ValidateUtil validateUtil = new StringValidateImpl();
+	
+	//chức năng chuyển tiền
+	public static void inputTrans() {
+		System.out.print("Nhập số tài khoản chuyển đi:");
+		
+	}
+
+}

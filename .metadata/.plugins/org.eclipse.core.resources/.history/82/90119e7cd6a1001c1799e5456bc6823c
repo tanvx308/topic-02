@@ -1,0 +1,14 @@
+package fis.java.minitest.dao;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import fis.java.minitest.model.Account;
+
+public class AccountDAO {
+	//sắp xếp danh sách
+	public static void sort(Comparator<Account> cmp, List<Account> accounts) {
+		Collections.sort(accounts, cmp);
+	}
+}

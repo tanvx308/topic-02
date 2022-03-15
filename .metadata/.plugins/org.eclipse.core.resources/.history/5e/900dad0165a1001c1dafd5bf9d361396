@@ -1,0 +1,9 @@
+package fis.java.topic2.util;
+
+import fis.java.topic2.common.DataForTest;
+
+public class MainUtil {
+	public static void show() {
+		DataForTest dataForTest = new DataForTest();
+	}
+}

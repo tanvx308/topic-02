@@ -1,0 +1,158 @@
+package fis.java.topic2.model;
+
+import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.util.*;
+
+public class SinhVien implements Serializable, Cloneable{
+	private String mssv;
+	private String ten;
+
+	private Set<Diem> monDaHoc = new HashSet<Diem>();
+
+	public SinhVien(String mssv, String ten) {
+		this.mssv = mssv;
+		this.ten = ten;
+	}
+
+	public String getMssv() {
+		return mssv;
+	}
+
+	public void setMssv(String mssv) {
+		this.mssv = mssv;
+	}
+
+	public String getTen() {
+		return ten;
+	}
+
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+
+	public Set<Diem> getMonDaHoc() {
+		return monDaHoc;
+	}
+
+	public void setMonDaHoc(Set<Diem> monDaHoc) {
+		this.monDaHoc = monDaHoc;
+	}
+
+	public boolean themDiem(Diem diemMoi) {
+		return this.monDaHoc.add(diemMoi);
+	}
+	
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if(obj instanceof SinhVien) {
+			return ((SinhVien)obj).mssv.equals(this.mssv);
+		}
+		return false;
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+	
+	public static List<SinhVien> createShortList(){
+		List<MonHoc> monHoc = MonHoc.createShortList();
+		List<SinhVien> list = new ArrayList<>();
+		
+		SinhVien sv1 = new SinhVien("SV01", "Văn Tèo");
+		sv1.setMonDaHoc(new HashSet<Diem>(Arrays.asList(new Diem(monHoc.get(0), 6),
+				new Diem(monHoc.get(1), 3),
+				new Diem(monHoc.get(2), 7),
+				new Diem(monHoc.get(3), 7))));
+		list.add(sv1);
+		
+		SinhVien sv2 = new SinhVien("SV02", "Nguyễn Thị Nở");
+		sv2.setMonDaHoc(new HashSet<Diem>(Arrays.asList(new Diem(monHoc.get(0), 4),
+				new Diem(monHoc.get(1), 10),
+				new Diem(monHoc.get(2), 4),
+				new Diem(monHoc.get(3), 6))));
+		list.add(sv2);
+		
+		
+		SinhVien sv3 = new SinhVien("SV03", "Lê Chí Phèo");
+		sv3.setMonDaHoc(new HashSet<Diem>(Arrays.asList(new Diem(monHoc.get(0), 2),
+				new Diem(monHoc.get(1), 0),
+				new Diem(monHoc.get(2), 7),
+				new Diem(monHoc.get(3), 6))));
+		list.add(sv3);
+		
+		
+		SinhVien sv4 = new SinhVien("SV04", "Trần Văn Tí");
+		sv4.setMonDaHoc(new HashSet<Diem>(Arrays.asList(new Diem(monHoc.get(0), 7),
+				new Diem(monHoc.get(1), 10),
+				new Diem(monHoc.get(2), 6),
+				new Diem(monHoc.get(3), 6))));
+		list.add(sv4);
+		
+		
+		SinhVien sv5 = new SinhVien("SV05", "Quách Tĩnh");
+		sv5.setMonDaHoc(new HashSet<Diem>(Arrays.asList(new Diem(monHoc.get(0), 10),
+				new Diem(monHoc.get(1), 9),
+				new Diem(monHoc.get(2), 8),
+				new Diem(monHoc.get(3), 8))));
+		list.add(sv5);
+		
+		return list;
+	}
+
+	// Cau 1
+	public double tinhDiemTrungBinh() {
+		// Giong nhu cach tinh hien tai cua truong
+		if (monDaHoc.size() != 0) {
+			double sum = monDaHoc.stream().map(item -> item.getDiem()).reduce((res, mark) -> res += mark).get();
+			return sum / monDaHoc.size();
+		}
+		// ...
+		return 0.0;
+	}
+
+	// Cau 2
+	public void bangDiem() {
+		/*
+		 * MSSV : 0203044 Ten : Nguyen Van A Danh Sach Diem STT Ten Mon Diem So Tin Chi
+		 * 1 Cau Truc Du Lieu 1 8 3 2 Cau Truc Du Lieu 2 8 3 Diem Trung Binh 8.0
+		 */
+		// ...
+		int i = 1;
+		System.out.println("\tDanh sách bảng điểm:");
+		System.out.println("MSSV : " + this.mssv);
+		System.out.println("Danh sách điểm:");
+		System.out.println("STT \t Tên môn \t\t  Điểm \t\t Số tín chỉ");
+		for (Diem diem : monDaHoc) {
+			System.out.printf("%d \t %s \t\t %d \t\t %d", i++, diem.getMon().getTen(), diem.getDiem(),
+					diem.getMon().tongTc());
+		}
+		System.out.println("Điểm trung bình: " + new DecimalFormat("#.##").format(tinhDiemTrungBinh()));
+	}
+
+	// Cau 3
+	public String xepLoai() {
+		/*
+		 * Quy tac xep loai nhu sau DiemTB < 5 -> YEU DiemTB >= 5 va DiemTB < 6 -> TB
+		 * DiemTB >= 6 va DiemTB < 7 -> TB-KHA DiemTB >= 7 va DiemTB < 8 -> KHA DiemTB
+		 * >= 8 -> GIOI
+		 */
+		double avg = tinhDiemTrungBinh();
+		if (avg < 5) {
+			return "YẾU";
+		} else if (avg < 6) {
+			return "TB";
+		} else if (avg < 7) {
+			return "TB-KHÁ";
+		} else if (avg < 8) {
+			return "KHÁ";
+		} else {
+			return "GIỎI";
+		}
+		// ...
+	}
+}

@@ -1,0 +1,11 @@
+package fis.java.minitest.view;
+
+public class MainApplication {
+	public static void main(String[] args) {
+//		while(true) {
+//			RunApp.display();
+//		}
+		Integer i = new Integer(1);
+		System.out.println(i.equals(1));
+	}
+}

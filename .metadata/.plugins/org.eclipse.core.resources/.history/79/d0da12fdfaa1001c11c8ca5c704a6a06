@@ -1,0 +1,10 @@
+package fis.java.minitest.view;
+
+public class MainApplication {
+	public synchronized static void main(String[] args) {
+		while(true) {
+			RunApp.display();
+			RunApp.show();
+		}
+	}
+}

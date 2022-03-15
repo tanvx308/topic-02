@@ -1,0 +1,15 @@
+package fis.java.minitest.common;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import fis.java.minitest.model.Account;
+
+public class Data {
+	public static Map<Integer, Account> map = new HashMap<>();
+	
+	static {
+		map.put(1, new Account(1L, "Đường Tăng", "050100112233", 100000, 1));
+	}
+}

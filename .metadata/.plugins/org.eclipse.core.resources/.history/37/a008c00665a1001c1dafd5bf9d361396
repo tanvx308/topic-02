@@ -1,0 +1,11 @@
+package fis.java.topic2.view;
+
+import fis.java.topic2.common.DataForTest;
+import fis.java.topic2.model.ChuongTrinhHoc;
+
+public class MainApplication {
+	public static void main(String[] args) {
+		DataForTest dataForTest = new DataForTest();
+		System.out.println(ChuongTrinhHoc.SINGLETON);;
+	}
+}
