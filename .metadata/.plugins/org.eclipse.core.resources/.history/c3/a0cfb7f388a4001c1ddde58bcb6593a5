@@ -1,10 +1,5 @@
 package fis.java.util;
 
-import java.util.Comparator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-
 public class MyStack<E extends Comparable<E>> {
 	
 	private Object[] elementStack;
@@ -96,14 +91,7 @@ public class MyStack<E extends Comparable<E>> {
 		return this.maxSize;
 	}
 	
-	//hàm forEach
-	public void forEach(Consumer<E> consumer) {
-		for(int i = 0; i < maxSize; i++) {
-			consumer.accept((E)elementStack[i]);
-		}
-	}
-	
-	//hàm sắp xếp stack theo comparable
+	//hàm sắp xếp stack
 	public void sort() {
 		for(int i = 0; i < this.maxSize - 1; i++) {
 			for(int j = 0; j < this.maxSize - i - 1; j++) {
@@ -117,22 +105,7 @@ public class MyStack<E extends Comparable<E>> {
 			}
 		}
 	}
-	
-	//hàm sắp xếp stack theo comparator
-		public void sort(Comparator<E> comparator) {
-			for(int i = 0; i < this.maxSize - 1; i++) {
-				for(int j = 0; j < this.maxSize - i - 1; j++) {
-					E e1 = (E)this.elementStack[j];
-					E e2 = (E)this.elementStack[j + 1];
-					if(comparator.compare(e1, e2) > 0) {
-						E temp = (E)this.elementStack[j];
-						this.elementStack[j] = this.elementStack[j + 1];
-						this.elementStack[j + 1] = temp;
-					}
-				}
-			}
-		}
-		
+
 	// hàm in ra stack
 	@Override
 	public String toString() {

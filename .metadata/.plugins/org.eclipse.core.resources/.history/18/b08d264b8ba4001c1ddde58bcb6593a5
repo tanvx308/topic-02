@@ -2,7 +2,6 @@ package fis.java.util;
 
 import java.util.Comparator;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class MyStack<E extends Comparable<E>> {
@@ -132,7 +131,7 @@ public class MyStack<E extends Comparable<E>> {
 				}
 			}
 		}
-		
+
 	// hàm in ra stack
 	@Override
 	public String toString() {
